@@ -2,13 +2,23 @@
 
 > A tutorial bot
 
+## Installation
+
+```bash
+git clone https://github.com/TheIdiotGuy/Tutorial-bot
+cd Tutorial-bot
+npm install
+```
+
 ## Usage
 
 - Remove .example file extension from `.env.example` & `config.json.example`.
+
 > **.env**
 ```bash
 token = "PUT_TOKEN_HERE"
 ``` 
+
 > **config.json**
 ```json
 {
@@ -16,6 +26,12 @@ token = "PUT_TOKEN_HERE"
     "test_server": "TEST_SERVER_ID"
 }
 ```
+
+> **Start the bot**
+```bash
+npm start
+```
+
 ## Support
 
 - **[Issues](https://github.com/TheIdiotGuy/Tutorial-bot/issues)**
