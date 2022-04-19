@@ -1,24 +1,14 @@
-const { readdirSync } = require("fs");
+const { Collection } = require("discord.js");
 const client = require("./utils/client");
 require("dotenv").config();
+client.commands = new Collection();
+const Handler = require("./classes/Handler");
+const _Handler = new Handler(client);
 
-// event handler
-
-const loadEvents = (folder) => {
-    const dir = readdirSync(`./events/${folder}/`).filter(file => file.endsWith(".js"));
-    for (let cmd of dir) {
-        const event = require(`./events/${folder}/${cmd}`)
-        const eventName = cmd.split(".")[0]
-        client.on(eventName, event.bind(null, client))
-        console.log(`File loaded : ${eventName}`);
-    }
+if (process.env["token"]) {
+    _Handler._init()
+} else {
+    throw new Error(`Bot token not provided.`)
 }
 
-const eventDirs = ["client"];
-eventDirs.forEach(file => {
-    loadEvents(file);
-});
-
-client.login(process.env["token"]).then(() => {
-    console.log("Token Login successful");
-})
+client.login(process.env["token"])
