@@ -40,5 +40,3 @@ npm start
 - **[Issues](https://github.com/TheIdiotGuy/Tutorial-bot/issues)**
 - **[Discord server](https://discord.gg/FQhkgnaNwn)**
 - **[@NotScare#2606](https://discord.com/users/953235785782534174)**
-
-<a href="https://google.com/" target="_blank" rel="noopener noreferrer">CLICK ME</a>
