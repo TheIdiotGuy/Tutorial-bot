@@ -9,12 +9,6 @@ const client = new Client({
     shards: "auto",
     presence: {
         status: "idle",
-        // activities: [
-        //     {
-        //         name: "Developing!!",
-        //         type: "PLAYING"
-        //     }
-        // ]
     }
 })
 

@@ -33,11 +33,7 @@ class Handler {
             for (let cmd of dir) {
                 const event = require(`../events/${folder}/${cmd}`)
                 const eventName = cmd.split(".")[0]
-                if (event.once) {
-                    client.once(event.name, (...args) => event.run(...args));
-                } else {
-                    client.on(event.name, (...args) => event.run(...args));
-                }
+                this.client.on(eventName, event.bind(null, this.client));
                 console.log(`[${'+'.magenta}] ${`File loaded : ${eventName}`.green}`);
             }
         }
