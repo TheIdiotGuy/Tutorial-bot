@@ -24,7 +24,7 @@ npm install
 > **.env**
 ```bash
 token = "PUT_TOKEN_HERE"
-``` 
+```
 
 > **config.json**
 ```json
