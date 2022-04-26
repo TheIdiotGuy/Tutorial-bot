@@ -2,13 +2,12 @@ const { MessageEmbed, MessageButton, Interaction, Client, MessageActionRow, Comm
 const moment = require("moment");
 require("moment-duration-format");
 require(`colors`);
-const pn = require("discordjs-button-pagination")
 
 module.exports = {
 
     name: 'help',
     description: 'The most helpfull command.',
-    category: 'Utility',
+    category: 'Info',
 
     /**
      * 
@@ -76,11 +75,33 @@ module.exports = {
             .setColor("#5440cd")
             .setThumbnail(client.user.displayAvatarURL())
 
+        const test3Emb = new MessageEmbed()
+            .setTitle("{botname} | Info Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Info", "Info")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
         const test2Emb = new MessageEmbed()
             .setTitle("{botname} | Utility Commands".replace(/{botname}/g, "Ochako"))
             .setDescription([
                 '```fix',
                 `${await _("Utility", "Utility")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
+        const test4Emb = new MessageEmbed()
+            .setTitle("{botname} | Music Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Music", "Music")}`,
                 '```'
             ].join("\n"))
             .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
@@ -108,7 +129,7 @@ module.exports = {
             .setStyle('SUCCESS');
 
         const row = new MessageActionRow().addComponents(but_1, but_2, but_3, but_4)
-        let embeds = [helpEmbed, testEmb, test2Emb]
+        let embeds = [helpEmbed, testEmb, test2Emb, test3Emb, test4Emb]
         let currentPage = 0;
 
         if (!interaction.deferred) {

@@ -1,7 +1,7 @@
 const { Client, Intents } = require("discord.js");
 
 const client = new Client({
-    intents: 515,
+    intents: 643,
     allowedMentions: {
         parse: ["users", "roles"],
         repliedUser: true

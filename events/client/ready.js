@@ -1,5 +1,4 @@
-const client = require("../../utils/client")
-
+const client = require("../../utils/client");
 /**
  * @param {client} client 
  */

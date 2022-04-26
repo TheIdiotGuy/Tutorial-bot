@@ -6,6 +6,15 @@ const Handler = require("./modules/Handler");
 const keepAlive = require("./keepAlive");
 const _Handler = new Handler(client);
 
+const MusicDirs = ["distube"];
+
+MusicDirs.forEach(music => {
+
+    const Api = require(`./utils/Distube/${music}`);
+    Api(client)
+
+})
+
 if (process.env["token"]) {
     _Handler._init()
     keepAlive()
