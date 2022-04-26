@@ -4,7 +4,7 @@
 
 ## What's New!
 
-```dif
+```diff
 + Added Distube Music System
 - Removed Lavalink & erela.js
 ```
