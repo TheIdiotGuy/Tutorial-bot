@@ -2,6 +2,13 @@
 
 > A tutorial bot
 
+## What's New!
+
+```dif
++ Added Distube Music System
+- Removed Lavalink & erela.js
+```
+
 ## Installation
 
 ```bash
