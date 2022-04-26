@@ -32,8 +32,8 @@ token = "PUT_TOKEN_HERE"
     "bot_id": "YOUR BOT ID",
     "test_server": "YOUR SUPPORT/TEST SERVER ID",
     "dev_id": "THE DEVELOPERS ID",
-    "under_maintenance": false
-    // ^^ SET THIS TO TRUE WHEN YOU WANT THE BOT TO NOT WORK FOR EVERYONE EXCEPT THE DEVELOPER
+    "under_maintenance": false,
+    "Comment": "SET THIS TO TRUE WHEN YOU WANT THE BOT TO NOT WORK FOR EVERYONE EXCEPT THE DEVELOPER"
 }
 ```
 
