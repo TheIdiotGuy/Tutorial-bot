@@ -6,6 +6,7 @@
 
 ```diff
 + Added Distube Music System
++ Added Context menu support
 - Removed Lavalink & erela.js
 ```
 
