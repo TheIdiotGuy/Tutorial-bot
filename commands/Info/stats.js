@@ -1,10 +1,8 @@
 const { MessageEmbed, Client, CommandInteraction, version, MessageActionRow, MessageButton } = require('discord.js');
 const moment = require("moment");
-const { description } = require("../../package.json");
 const config = require("../../config.json");
 require("moment-duration-format");
 require(`colors`);
-const wait = require("node:timers/promises").setTimeout;
 
 module.exports = {
 
@@ -25,16 +23,7 @@ module.exports = {
             const _ = await client.users.fetch(userID);
             return _.tag;
         }
-
-        // await interaction.reply({
-        //     embeds: [
-        //         new MessageEmbed()
-        //             .setAuthor({ name: "Getting bot stats ...", iconURL: client.user.displayAvatarURL() })
-        //             .setColor("#5440cd")
-        //     ]
-        // });
         await interaction.deferReply({ ephemeral: true })
-        // await wait(1000)
         await interaction.editReply({
             embeds: [
                 new MessageEmbed()

@@ -5,6 +5,7 @@
     "@distube/soundcloud": "^1.1.0",
     "@distube/spotify": "^1.2.1",
     "@distube/yt-dlp": "^1.0.2",
+    "ascii-table": "^0.0.9",
     "chalk": "^5.0.1",
     "colors": "^1.4.0",
     "discord-api-types": "^0.31.1",

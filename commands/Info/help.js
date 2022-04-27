@@ -147,7 +147,7 @@ module.exports = {
 
         const collector = await help_panel.createMessageComponentCollector({
             // filter,
-            time: 180e3,
+            time: 1000,
         });
 
         collector.on('collect', async (i) => {
@@ -175,6 +175,7 @@ module.exports = {
 
         collector.on('end', async (_, reason) => {
             if (reason !== "messageDelete") {
+
                 let disabled = new MessageActionRow().addComponents([but_1.setDisabled(true), but_2, but_3, but_4.setDisabled(true)])
                 const alldisabledbuttons = [disabled]
 
@@ -185,7 +186,7 @@ module.exports = {
                             .setDescription([
                                 `**Hey ${interaction.user}, {botname} here! You can trigger the help panel again by using \`/help\` anytime.**`.replace(/{botname}/g, "Ochako"),
                                 '',
-                                '> **The Help Panel has been expired.**'
+                                '> **The Help Panel has been expired.**',
                             ].join("\n"))
                             .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
                             .setColor("#5440cd")
@@ -193,6 +194,7 @@ module.exports = {
                     ],
                     components: alldisabledbuttons
                 }).catch((e) => { })
+
             }
         });
     }
