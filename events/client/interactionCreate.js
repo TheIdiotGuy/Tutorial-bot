@@ -49,7 +49,14 @@ module.exports = async (client, interaction) => {
             ) {
                 await interaction.reply({ content: `**Ochako under maintenance.**\n> **Only the developer ( \`${await _Dev(config.dev_id)}\` ) can use commands.**`, ephemeral: true })
             } else {
-                command.run(client, interaction);
+                try {
+                    command.run(client, interaction);
+                } catch (err) {
+                    interaction.reply({
+                        content: `**Command didn't respond!**\n> **Error Message** : \`${err.message}\``,
+                        ephemeral: true
+                    })
+                }
             }
 
         } catch (error) {

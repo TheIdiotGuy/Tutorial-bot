@@ -86,7 +86,7 @@ module.exports = {
             return;
         }
 
-        fetchUser.ban(reason).then(async () => {
+        fetchUser.ban({ reason: reason, days: 7 }).then(async () => {
             await interaction.reply(`Banned ${fetchUser}`)
         })
 
