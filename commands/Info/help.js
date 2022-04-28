@@ -1,4 +1,5 @@
 const { MessageEmbed, MessageButton, Interaction, Client, MessageActionRow, CommandInteraction, Message } = require('discord.js');
+const { get } = require('express/lib/response');
 const moment = require("moment");
 require("moment-duration-format");
 require(`colors`);
@@ -34,8 +35,8 @@ module.exports = {
                 ``,
                 `<:ochako_menu:955149878458216469> **Modules**`,
                 ``,
-                `> - <a:ochako_utility:922041157456920626> **Utility**`,
                 `> - <:ochako_hammer:955148127260774450> **Admin**`,
+                `> - <a:ochako_utility:922041157456920626> **Utility**`,
                 ``,
                 `<:links:966617884547768320> **Useful Links**`,
                 ``,
@@ -51,20 +52,35 @@ module.exports = {
             return capped
         }
 
+        async function getN(_0) {
+            let n;
+
+            client.commands
+                .filter(_x => _x.category === _0)
+                .forEach((_cm) => {
+                    for (let a = 1; a <= _cm.length; a++) {
+                        n = a
+                    }
+                })
+            console.log(n)
+        }
+
         async function _(dir, varName) {
 
-            varName = []
+            varName = [];
+            let count = 0;
 
             client.commands
                 .filter(_cmd => _cmd.category === dir)
                 .forEach((_command) => {
-                    varName.push(`§ ${_command.name.charAt(0).toUpperCase() + _command.name.slice(1)} : ${_command.description}`)
+                    count += 1
+                    varName.push(`${count} - ${_command.name.charAt(0).toUpperCase() + _command.name.slice(1)}`)
                 })
 
             return varName.join("\n")
         }
 
-        const testEmb = new MessageEmbed()
+        const admin = new MessageEmbed()
             .setTitle("{botname} | Admin Commands".replace(/{botname}/g, "Ochako"))
             .setDescription([
                 '```fix',
@@ -75,7 +91,7 @@ module.exports = {
             .setColor("#5440cd")
             .setThumbnail(client.user.displayAvatarURL())
 
-        const test3Emb = new MessageEmbed()
+        const info = new MessageEmbed()
             .setTitle("{botname} | Info Commands".replace(/{botname}/g, "Ochako"))
             .setDescription([
                 '```fix',
@@ -86,7 +102,7 @@ module.exports = {
             .setColor("#5440cd")
             .setThumbnail(client.user.displayAvatarURL())
 
-        const test2Emb = new MessageEmbed()
+        const utility = new MessageEmbed()
             .setTitle("{botname} | Utility Commands".replace(/{botname}/g, "Ochako"))
             .setDescription([
                 '```fix',
@@ -97,11 +113,33 @@ module.exports = {
             .setColor("#5440cd")
             .setThumbnail(client.user.displayAvatarURL())
 
-        const test4Emb = new MessageEmbed()
+        const music = new MessageEmbed()
             .setTitle("{botname} | Music Commands".replace(/{botname}/g, "Ochako"))
             .setDescription([
                 '```fix',
                 `${await _("Music", "Music")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
+        const search = new MessageEmbed()
+            .setTitle("{botname} | Search Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Search", "Search")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
+        const fun = new MessageEmbed()
+            .setTitle("{botname} | Fun Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Fun", "Fun")}`,
                 '```'
             ].join("\n"))
             .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
@@ -129,7 +167,7 @@ module.exports = {
             .setStyle('SUCCESS');
 
         const row = new MessageActionRow().addComponents(but_1, but_2, but_3, but_4)
-        let embeds = [helpEmbed, testEmb, test2Emb, test3Emb, test4Emb]
+        let embeds = [helpEmbed, admin, fun, info, music, search, utility]
         let currentPage = 0;
 
         if (!interaction.deferred) {
@@ -147,7 +185,7 @@ module.exports = {
 
         const collector = await help_panel.createMessageComponentCollector({
             // filter,
-            time: 1000,
+            time: 180e6,
         });
 
         collector.on('collect', async (i) => {

@@ -1,7 +1,7 @@
 const { Collection } = require("discord.js");
 const client = require("./utils/client");
 require("dotenv").config();
-client.commands = new Collection();
+module.exports = client.commands = new Collection();
 const Handler = require("./modules/Handler");
 const keepAlive = require("./keepAlive");
 const _Handler = new Handler(client);

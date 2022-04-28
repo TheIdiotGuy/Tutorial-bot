@@ -1,12 +1,10 @@
 const { MessageEmbed, MessageButton, MessageActionRow, Client, Interaction } = require('discord.js');
 require(`colors`);
-const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
 
     name: 'kick',
-    description: 'Kicks user from the Guild',
-    timeout: 5000,
+    description: 'Kicks user from the Guild.',
     category: 'Admin',
     options: [
         {

@@ -4,8 +4,7 @@ require(`colors`);
 module.exports = {
 
     name: 'ban',
-    description: 'Bans user from the Guild',
-    timeout: 5000,
+    description: 'Bans user from the Guild.',
     category: 'Admin',
     options: [
         {
@@ -22,7 +21,6 @@ module.exports = {
     ],
 
     /**
-     * 
      * @param {Client} client 
      * @param {Interaction} interaction 
      * @returns 

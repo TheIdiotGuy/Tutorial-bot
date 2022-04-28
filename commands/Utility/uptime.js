@@ -1,5 +1,4 @@
 const { MessageEmbed, MessageButton } = require('discord.js');
-const { Ochako } = require(`../../config.json`)
 require(`colors`);
 
 module.exports = {

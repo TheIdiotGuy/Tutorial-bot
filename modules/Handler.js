@@ -38,7 +38,7 @@ class Handler {
             }
         }
 
-        const eventDirs = ["client"];
+        const eventDirs = ["client", "guild"];
         eventDirs.forEach(file => {
             loadEvents(file);
         });
