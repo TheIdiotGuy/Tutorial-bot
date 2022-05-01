@@ -4,12 +4,15 @@ const { Routes } = require('discord-api-types/v9');
 const rest = new REST({ version: "9" }).setToken(process.env["token"]);
 const sleep = require("time-sleep");
 const client = require("../utils/client");
+const { E } = require("../utils/error");
 require("colors")
 
 class Handler {
+
     /**
      * @param {client} client 
      */
+
     constructor(client) {
         this.client = client;
         this.bot_id = require("../config.json").bot_id;
@@ -17,14 +20,23 @@ class Handler {
     }
 
     async handleCommands() {
-        readdirSync("./commands/").forEach(dir => {
-            const folder = readdirSync(`./commands/${dir}/`).filter(files => files.endsWith(".js"));
+        readdirSync("./commands/Slash/").forEach(dir => {
+            const folder = readdirSync(`./commands/Slash/${dir}/`).filter(files => files.endsWith(".js"));
             for (let cmd of folder) {
-                let pull = require(`../commands/${dir}/${cmd}`)
+                let pull = require(`../commands/Slash/${dir}/${cmd}`)
                 this.client.commands.set(pull.name, pull);
-                console.log(`[${'+'.magenta}] ${`Loaded command : ${pull.name}`.green}`)
+                console.log(`[${"+".magenta}] ${`Slash command : ${pull.name}`.green}`)
             }
-        })
+        });
+
+        readdirSync("./commands/Prefix/").forEach(dir => {
+            const folder = readdirSync(`./commands/Prefix/${dir}/`).filter(files => files.endsWith(".js"));
+            for (let cmd of folder) {
+                let pull = require(`../commands/Prefix/${dir}/${cmd}`)
+                // this.client.prefix.set(pull.name, pull);
+                console.log(`[${"+".magenta}] ${`Prefix command : ${pull.name}`.green}`)
+            }
+        });
     }
 
     async handleEvents() {
@@ -46,10 +58,10 @@ class Handler {
 
     async registerCommands() {
         const cmds = [];
-        readdirSync("./commands/").forEach(dir => {
-            const fold = readdirSync(`./commands/${dir}/`).filter(files => files.endsWith(".js"))
+        readdirSync("./commands/Slash/").forEach(dir => {
+            const fold = readdirSync(`./commands/Slash/${dir}/`).filter(files => files.endsWith(".js"))
             for (let file of fold) {
-                const command = require(`../commands/${dir}/${file}`)
+                const command = require(`../commands/Slash/${dir}/${file}`)
                 cmds.push(command)
             }
         })

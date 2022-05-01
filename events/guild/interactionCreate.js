@@ -1,7 +1,7 @@
 const { Interaction } = require("discord.js");
 const client = require("../../utils/client");
 const config = require("../../config.json");
-
+const { E } = require("../../utils/error");
 /**
  * 
  * @param {client} client 
@@ -44,18 +44,15 @@ module.exports = async (client, interaction) => {
 
             if (
                 config.under_maintenance &&
-                interaction.user.id !== config.dev_id &&
-                interaction.commandName === command.name
+                interaction.commandName === command.name &&
+                interaction.user.id !== config.dev_id
             ) {
                 await interaction.reply({ content: `**Ochako under maintenance.**\n> **Only the developer ( \`${await _Dev(config.dev_id)}\` ) can use commands.**`, ephemeral: true })
             } else {
                 try {
                     command.run(client, interaction);
                 } catch (err) {
-                    interaction.reply({
-                        content: `**Command didn't respond!**\n> **Error Message** : \`${err.message}\``,
-                        ephemeral: true
-                    })
+                    E.sendDev(interaction, err)
                 }
             }
 
