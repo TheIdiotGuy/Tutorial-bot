@@ -37,7 +37,9 @@ npm install
 
 > **.env**
 ```bash
-token = "PUT_TOKEN_HERE"
+token=YOUR BOT TOKEN
+SpotifyId=SpotifyDeveloper_ClientId
+SpotifySecret=SpotifyDeveloper_ClientSecret
 ```
 
 > **config.json**

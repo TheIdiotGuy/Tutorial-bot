@@ -17,7 +17,11 @@ const distube = new DisTube(client, {
     nsfw: true,
     plugins: [
         new SpotifyPlugin({
-            emitEventsAfterFetching: true
+            emitEventsAfterFetching: true,
+            api: {
+                clientId: process.env["SpotifyId"],
+                clientSecret: process.env["SpotifySecret"]
+            }
         }),
         new SoundCloudPlugin(),
         new YtDlpPlugin()
