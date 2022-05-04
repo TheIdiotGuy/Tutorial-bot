@@ -1,25 +1,18 @@
-const { Client, Interaction, MessageEmbed } = require("discord.js")
+const { Client, MessageEmbed, Message } = require("discord.js")
 
 module.exports = {
     name: "ping",
+    aliases: [],
     description: "The bot speed",
     category: "Utility",
     /**
      * 
      * @param {Client} client
-     * @param {Interaction} interaction
+     * @param {Message} message
      */
-    async run(client, interaction) {
+    async run(client, message, args) {
 
-        var date = Date.now()
+        message.reply("works")
 
-        const ping = new MessageEmbed()
-            .setTitle("Ochako | BOT PING")
-            .setColor('BLURPLE')
-            .setTimestamp()
-            .setDescription(`> **Ping : \`${Math.round(Date.now() - date)} ms!\`**`)
-            .setFooter({ text: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
-
-        interaction.reply({ embeds: [ping], ephemeral: true })
     }
 }

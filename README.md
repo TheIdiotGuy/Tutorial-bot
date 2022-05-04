@@ -2,13 +2,26 @@
 
 > A tutorial bot
 
-## What's New!
+## Features
 
-```diff
-+ Added Distube Music System
-+ Added Context menu support
-- Removed Lavalink & erela.js
-```
+- 50+ Commands
+- Supports **Prefix commands** & **Slash commands**
+- Advanced Error handler
+- Command Categories
+  - Admin
+  - Context Menu
+  - Fun
+  - Info
+  - Music ( Buggy )
+  - Search
+  - Social
+  - Utility
+  - Games ( Coming soon )
+  - Nsfw ( Coming soon )
+  - Minigames ( Coming soon )
+  - Anti Nuke ( Coming soon
+  
+`Note : The bot is buggy and it is in its alpha stage, i ( TheIdiotGuy ) is trying to fix it as soon as possible and make it the most easy to use + advanced bot at the same time`
 
 ## Installation
 

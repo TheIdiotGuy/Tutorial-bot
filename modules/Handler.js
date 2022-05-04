@@ -33,8 +33,13 @@ class Handler {
             const folder = readdirSync(`./commands/Prefix/${dir}/`).filter(files => files.endsWith(".js"));
             for (let cmd of folder) {
                 let pull = require(`../commands/Prefix/${dir}/${cmd}`)
-                // this.client.prefix.set(pull.name, pull);
-                console.log(`[${"+".magenta}] ${`Prefix command : ${pull.name}`.green}`)
+                if (pull.name) {
+                    this.client.prefix.set(pull.name, pull);
+                    console.log(`[${"+".magenta}] ${`Prefix command : ${pull.name}`.green}`)
+                } else {
+                    console.log(`[${"-".magenta}] ${`Prefix command : ${pull.name}`.red}`)
+                }
+                if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => client.aliases.set(alias, pull.name));
             }
         });
     }

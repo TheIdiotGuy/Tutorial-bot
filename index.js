@@ -2,10 +2,14 @@ const { Collection } = require("discord.js");
 const client = require("./utils/client");
 require("dotenv").config();
 client.commands = new Collection();
-// client.slash = new Collection();
+client.prefix = new Collection();
+client.aliases = new Collection();
 const Handler = require("./modules/Handler");
 const keepAlive = require("./keepAlive");
 const _Handler = new Handler(client);
+const Enmap = require("enmap");
+
+client.settings = new Enmap({ name: "settings", dataDir: "./database/settings" });
 
 const MusicDirs = ["distube"];
 
