@@ -19,7 +19,7 @@
   - Games ( Coming soon )
   - Nsfw ( Coming soon )
   - Minigames ( Coming soon )
-  - Anti Nuke ( Coming soon
+  - Anti Nuke ( Coming soon )
   
 `Note : The bot is buggy and it is in its alpha stage, i ( TheIdiotGuy ) is trying to fix it as soon as possible and make it the most easy to use + advanced bot at the same time`
 
