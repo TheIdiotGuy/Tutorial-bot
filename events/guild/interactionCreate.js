@@ -33,7 +33,33 @@ module.exports = async (client, interaction) => {
 
             if (command.ownerOnly) {
                 if (interaction.user.id !== interaction.guild.ownerId) {
-                    return interaction.reply({ content: "Only ownership of this server can use this command", ephemeral: true })
+                    return interaction.reply({
+                        embeds: [
+                            {
+                                title: "Owner Only Command",
+                                description: [
+                                    `**This command can only be executed by server owner.**`
+                                ].join("\n"),
+                                color: "#5440cd"
+                            }
+                        ]
+                    })
+                }
+            }
+
+            if (command.devOnly) {
+                if (interaction.user.id !== config.dev_id) {
+                    return interaction.reply({
+                        embeds: [
+                            {
+                                title: "Developer Only Command",
+                                description: [
+                                    `**This command can only be executed by bot developer.**`
+                                ].join("\n"),
+                                color: "#5440cd"
+                            }
+                        ]
+                    })
                 }
             }
 

@@ -17,7 +17,7 @@ module.exports = {
             .setTitle("Ochako | BOT PING")
             .setColor('BLURPLE')
             .setTimestamp()
-            .setDescription(`> **Ping : \`${Math.round(Date.now() - date)} ms!\`**`)
+            .setDescription(`> **Ping : \`${client.ws.ping} ms!\`**`)
             .setFooter({ text: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
 
         interaction.reply({ embeds: [ping], ephemeral: true })

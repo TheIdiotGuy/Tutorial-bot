@@ -1,6 +1,7 @@
 const { readdirSync } = require("fs");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+require("dotenv").config();
 const rest = new REST({ version: "9" }).setToken(process.env["token"]);
 const sleep = require("time-sleep");
 const client = require("../utils/client");
@@ -62,7 +63,8 @@ class Handler {
     }
 
     async registerCommands() {
-        const cmds = [];
+        let cmds = [];
+
         readdirSync("./commands/Slash/").forEach(dir => {
             const fold = readdirSync(`./commands/Slash/${dir}/`).filter(files => files.endsWith(".js"))
             for (let file of fold) {
@@ -70,26 +72,36 @@ class Handler {
                 cmds.push(command)
             }
         })
-        await rest.put(
 
-            Routes.applicationGuildCommands(this.bot_id, this.test_server),
-            { body: cmds },
+        let config = require("../config.json");
 
-            console.log(`[${'+'.magenta}] ${'Commands registered'.green}`)
-        );
+        if (config.globalCmd) {
+            await rest.put(
+
+                Routes.applicationCommands(this.bot_id),
+                { body: cmds },
+
+                console.log(`[${'+'.magenta}] ${'Commands registered globally'.green}`)
+            );
+        } else {
+            await rest.put(
+
+                Routes.applicationGuildCommands(this.bot_id, this.test_server),
+                { body: cmds },
+
+                console.log(`[${'+'.magenta}] ${'Commands registered locally'.green}`)
+            );
+        }
     }
 
     async _init() {
         console.log(`[${'SYSTEM'.red}] ${'Attempting to load command files.'.cyan}`);
-        // await sleep(3000)
         this.handleCommands()
 
         console.log(`[${'SYSTEM'.red}] ${'Attempting to register slash commands'.cyan}`);
-        // await sleep(3000)
         this.registerCommands();
 
         console.log(`[${'SYSTEM'.red}] ${'Attempting to load event files.'.cyan}`)
-        // await sleep(3000)
         this.handleEvents()
     }
 }

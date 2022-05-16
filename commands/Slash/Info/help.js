@@ -146,6 +146,39 @@ module.exports = {
             .setColor("#5440cd")
             .setThumbnail(client.user.displayAvatarURL())
 
+        const dev = new MessageEmbed()
+            .setTitle("{botname} | Developer Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Developer", "Developer")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
+        const games = new MessageEmbed()
+            .setTitle("{botname} | Game Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Games", "Games")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
+        const social = new MessageEmbed()
+            .setTitle("{botname} | Social Commands".replace(/{botname}/g, "Ochako"))
+            .setDescription([
+                '```fix',
+                `${await _("Social", "Social")}`,
+                '```'
+            ].join("\n"))
+            .setFooter({ text: "Ochako <3", iconURL: client.user.displayAvatarURL() })
+            .setColor("#5440cd")
+            .setThumbnail(client.user.displayAvatarURL())
+
         const but_1 = new MessageButton()
             .setCustomId('bck')
             .setEmoji("<:Previous:966405885838651442>")
@@ -167,7 +200,7 @@ module.exports = {
             .setStyle('SUCCESS');
 
         const row = new MessageActionRow().addComponents(but_1, but_2, but_3, but_4)
-        let embeds = [helpEmbed, admin, fun, info, music, search, utility]
+        let embeds = [helpEmbed, admin, dev, fun, games, info, music, search, social, utility]
         let currentPage = 0;
 
         if (!interaction.deferred) {

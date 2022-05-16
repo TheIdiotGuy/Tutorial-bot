@@ -18,9 +18,9 @@ module.exports = {
 			const req = await axios.get(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(query)}`);
 			const data = req.data;
 			if (data && !data.error) {
-				interaction.reply({ embeds: [data] });
+				interaction.reply({ content: data });
 			} else {
-				return interaction.rpely({ content: `:x: There was an error`, ephemeral: true });
+				return interaction.reply({ content: `:x: There was an error`, ephemeral: true });
 			}
 		} catch (e) {
 			return interaction.reply({ content: e, ephemeral: true });

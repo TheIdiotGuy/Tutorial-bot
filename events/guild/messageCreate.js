@@ -101,7 +101,7 @@ module.exports = async (client, message) => {
             command.ownerOnly &&
             message.member.id !== message.guild.ownerId
         ) {
-            message.reply({
+            return message.reply({
                 embeds: [
                     {
                         title: "Owner Only Command",
@@ -120,7 +120,7 @@ module.exports = async (client, message) => {
             command.devOnly &&
             message.member.id !== config.dev_id
         ) {
-            message.reply({
+            return message.reply({
                 embeds: [
                     {
                         title: "Developer Only Command",
@@ -133,6 +133,7 @@ module.exports = async (client, message) => {
             })
         }
 
+
         // Under maintenance statement
 
         if (
@@ -140,7 +141,7 @@ module.exports = async (client, message) => {
             message.content === command.name &&
             message.member.id !== config.dev_id
         ) {
-            await message.reply({ content: `**Ochako under maintenance.**\n> **Only the developer ( \`${await _Dev(config.dev_id)}\` ) can use commands.**`, ephemeral: true }).then(msg => { setTimeout(() => { try { msg.delete().catch(() => { }); } catch (e) { } }, 3000) }).catch(() => { });
+            return await message.reply({ content: `**Ochako under maintenance.**\n> **Only the developer ( \`${await _Dev(config.dev_id)}\` ) can use commands.**`, ephemeral: true }).then(msg => { setTimeout(() => { try { msg.delete().catch(() => { }); } catch (e) { } }, 3000) }).catch(() => { });
         } else {
             try {
                 command.run(client, message, args);

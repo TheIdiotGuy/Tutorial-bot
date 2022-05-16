@@ -1,0 +1,14 @@
+{
+    "embeds": [
+        {
+            "title": "Ochako | Uptime",
+            "footer": {
+                "text": "~ Cyborg Developement"
+            },
+            "description": "**Ochako Status.**\n> <a:Uptime:966360723166990379> **Status: *alertTypeFriendlyName***",
+            "thumbnail": {
+                "url": "https://cdn.discordapp.com/attachments/913070144266305556/974991370567680030/avatars-pOOHg1cREZ2wu0I1-VRICZA-t500x500.jpg"
+            }
+        }
+    ]
+}
